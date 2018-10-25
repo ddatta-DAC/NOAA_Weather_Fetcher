@@ -1,7 +1,5 @@
 import argparse
-
-import aggregate_weeks
-from Deprecated import load_db
+import src.load_db as load_db
 
 parser = argparse.ArgumentParser ()
 
@@ -18,7 +16,6 @@ parser.add_argument ('-date_all_mean', type=bool,
 
 parser.print_help ()
 args = parser.parse_args ()
-
 date = args.date
 date_complete = args.date_complete
 date_all_mean = args.date_all_mean
@@ -32,9 +29,6 @@ elif date_complete is True:
 
 elif date_all_mean is True:
     load_db.load_all_years ()
-
-elif week_all_mean is True:
-    aggregate_weeks.process_all_years_week_mean ()
 
 else:
     parser.print_help ()
